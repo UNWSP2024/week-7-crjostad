@@ -1,10 +1,25 @@
-# Program #4: Coordinates
-# Write a distance function that will take two 3-dimensional coordinates (as input) 
-# and will return (as output) the distance between those points in space.  
-# The 3-dimensional coordinates must be stored as tuples.
+def main():
+    all_entered_values = []
+    
+    while True:
+        year = int(input("Enter the year (or -1 to stop): "))
+        if year == -1:
+            break
+        state = input("Enter the name of the state: ")
+        population = int(input("Enter the population: "))
+        all_entered_values.append([year, state, population])
+    
+    year_to_sum = int(input("Enter the year for which to sum the population: "))
+    
+    sum_population_for_year(all_entered_values, year_to_sum)
 
-# Now write a mainline that has the user enter the two tuples.  
-# The mainline calls the distance function and stores the distance in a variable.  The mainline then displays the distance.  
-# Also include exception handling to deal with faulty input.
-# The distance between two points (x1,y1,z1) and (x2, y2, z2) is 
-#    given by:   sqrt ((x2-x1)^2 + (y2 - y1)^2 + (z1 - z2)^2) 
+def sum_population_for_year(all_entered_values, year_to_sum):
+    total_population = 0
+    for entry in all_entered_values:
+        if entry[0] == year_to_sum:
+            total_population += entry[2]
+    
+    print(f"Total population for the year {year_to_sum}: {total_population}")
+
+if __name__ == '__main__':
+    main()
